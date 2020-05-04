@@ -1,4 +1,6 @@
-# Recommind
+# Recommind 
+_This is an updated version of a project done in August 2019_
+
 
 ## The Problem
 Finding a mental health care practitioner can be confusing and time consuming. With the current health care system in the United States, navigating an already complex system can make it difficult for patients to find the care they need. This problem can be escalated by the stigma that surrounds mental health. The <a href="https://www.apa.org/news/press/releases/2019/05/mental-health-survey">American Psychological Association</a> reported that while public opinion toward mental health is becoming more positive, there is still significant stigma associated with mental health care. 
