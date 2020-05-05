@@ -32,7 +32,7 @@ The data that a user inputs is vectorized and compared to each vectorized practi
 </p>
 
 ## Next Steps
-Ideally I would like to be able to include the ability for users to weigh the parameters based on their needs. For example, maybe a patient is more concerned with finding a very specific specialist than one that is close by or that is on their insurance plan. People's health and health care needs are personal and unique, and I hope to be able to cater to those needs with future optimization. 
+Ideally I would like to include the ability for users to weigh the parameters based on their needs. For example, maybe a patient is more concerned with finding a very specific specialist than one that is close by or that is on their insurance plan. People's health and health care needs are personal and unique, and I hope to be able to cater to those needs with future optimization. 
 
 ## References
 <a id="1">[1]</a> 
