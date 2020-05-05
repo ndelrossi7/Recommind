@@ -98,7 +98,7 @@ class Recommendation:
         ins_s (str): insurance plan
 
         Returns:
-        df (vector) of patient input
+        df (vector): patient input
         """
         tests = vectorized.iloc[:, 3:].loc[0]
         testdict = tests.to_dict()
