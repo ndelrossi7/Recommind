@@ -19,7 +19,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 #import doc_map.html
 import folium
 
-
+# instantiating the class
+r = f.Recommendation('vectorized', 'response', 'zipsdf', 'gender', 'new_patient', 'need_ins', 'langs', 'specs', 'ins_s', '_id', 'zipcode', 'rec_input', 'n')
 all_options =  f.all_plans
 yesno = ['Yes', 'No']
 languages = f.languages
@@ -30,38 +31,38 @@ df = f.vectorized
 zipsdf = f.zipsdf
 for_model = df.iloc[:, 3:]
 
-def rec_input(gender, new_patient, need_ins, langs, specs, plan):
-    tests = for_model
-    testdict = tests.to_dict()
-    series_template = {x:0 for x in testdict} 
+# def rec_input(gender, new_patient, need_ins, langs, specs, plan):
+#     tests = for_model
+#     testdict = tests.to_dict()
+#     series_template = {x:0 for x in testdict} 
         
-    if gender == genders[0]:
-        series_template['Gender'] = 1
-    elif gender == genders[1]:
-        series_template['Gender'] = 0
-    elif gender == genders[2]:
-        series_template['Gender'] = 0.5
+#     if gender == genders[0]:
+#         series_template['Gender'] = 1
+#     elif gender == genders[1]:
+#         series_template['Gender'] = 0
+#     elif gender == genders[2]:
+#         series_template['Gender'] = 0.5
             
-    if new_patient == yesno[0]:
-        series_template['New_Patients'] = 1
+#     if new_patient == yesno[0]:
+#         series_template['New_Patients'] = 1
             
-    series_template['num_lang'] = len(langs)
+#     series_template['num_lang'] = len(langs)
         
-    if need_ins == yesno[0]:
-        series_template['insurance'] = 1
+#     if need_ins == yesno[0]:
+#         series_template['insurance'] = 1
             
-    for spec in specs: 
-        series_template['{}'.format(spec)] = 1
+#     for spec in specs: 
+#         series_template['{}'.format(spec)] = 1
         
-    if plan == 'na':
-        pass
-    else:
-        series_template['{}'.format(plan)] = 1
+#     if plan == 'na':
+#         pass
+#     else:
+#         series_template['{}'.format(plan)] = 1
             
-    for lang in langs: 
-        series_template['{}'.format(lang)] = 1
+#     for lang in langs: 
+#         series_template['{}'.format(lang)] = 1
             
-    return pd.DataFrame(series_template, index=[0])
+#     return pd.DataFrame(series_template, index=[0])
 
 
 print(dcc.__version__) # 0.6.0 or above is required
@@ -92,7 +93,7 @@ index_page = html.Div([
     html.Br(),
     html.Br(),
         
-    html.H1('Welcome to the Mental Health Practitioner Recommender!', 
+    html.H1('Welcome to Recommind!', 
             style = {'color': '#008080', 'fontSize': 25, 'font-weight': 'bold'}),
     dcc.Link(html.Button('Get Started'), href='/form', id = 'start'),
     html.Br()
@@ -101,7 +102,7 @@ index_page = html.Div([
 page_1_layout = html.Div([
         
     
-    html.H1('Welcome to the Mental Health Practitioner Recommender!', 
+    html.H1('Welcome to Recommind!', 
             style = {'color': '#008080', 'fontSize': 25, 'text-align': 'center', 'font-weight': 'bold'}),
             
     html.H1('Please fill out the following questionnaire:', 
@@ -282,8 +283,8 @@ def page_2_ins(data):
     langs = data[4]
     specs = data[5]
     zipcode = data[6]
-    test = rec_input(gender, new_pat, need_ins, langs, specs, plans)
-    recs = f.Recommendation.cos_sim(self, f.df, test, n, zipcode)
+    test = r.rec_input(gender, new_pat, need_ins, langs, specs, plans)
+    recs = r.cos_sim(df, test, n, zipcode)
     spaced = []
     for i in range(len(recs)):
         spaced.append(f"{i+1}" + ".")
