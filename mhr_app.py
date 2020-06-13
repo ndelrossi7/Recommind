@@ -71,11 +71,8 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# Since we're adding callbacks to elements that don't exist in the app.layout,
-# Dash will raise an exception to warn us that we might be
-# doing something wrong.
-# In this case, we're adding the elements through a callback, so we can ignore
-# the exception.
+
+# adding callbacks to things that don't exist yet --> we need to suppress callback exceptions
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
